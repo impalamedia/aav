@@ -1,26 +1,25 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "aav",
-	"main": "build/_worker.js",
-	"compatibility_date": "2026-05-28",
-	"assets": {
-		"directory": "build",
-		"binding": "ASSETS"
-	},
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	"routes": [
-		{
-			"pattern": "auth.aave-capital.com",
-			"zone_name": "aave-capital.com",
-			"custom_domain": true,
-			"enabled": true,
-			"previews_enabled": false
-		}
-	],
-	"vars": {
-		"SUPABASE_SERVICE_ROLE__KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwb2hyeWtpYmN2cXFud2lyd3doIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTk2MzIzNCwiZXhwIjoyMDk1NTM5MjM0fQ.zAw2W_rGY_3-7nAnTyPBSl6rKChmiVf_eG_blfLAxsg",
-		"SUPABASE_URL": "https://qpohrykibcvqqnwirwwh.supabase.co"
-	}
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aav",
+  "account_id": "81ccebd6b041eca11302e779da5bd925",
+  "main": "build/_worker.js",
+  "compatibility_date": "2026-05-28",
+  "assets": {
+    "directory": "build",
+    "binding": "ASSETS",
+  },
+  "compatibility_flags": ["nodejs_compat"],
+  "routes": [
+    {
+      "pattern": "aave-capital.com",
+      "zone_name": "aave-capital.com",
+      "custom_domain": true,
+      "enabled": true,
+      "previews_enabled": false,
+    },
+  ],
+  "vars": {
+    "SUPABASE_SERVICE_ROLE__KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwb2hyeWtpYmN2cXFud2lyd3doIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTk2MzIzNCwiZXhwIjoyMDk1NTM5MjM0fQ.zAw2W_rGY_3-7nAnTyPBSl6rKChmiVf_eG_blfLAxsg",
+    "SUPABASE_URL": "https://qpohrykibcvqqnwirwwh.supabase.co",
+  },
 }

